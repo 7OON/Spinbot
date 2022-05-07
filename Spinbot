@@ -1,0 +1,19 @@
+function getRoot(char)
+				local rootPart = char:FindFirstChild('HumanoidRootPart') or char:FindFirstChild('UpperTorso')
+				return rootPart
+			end
+
+			if state == true then
+				local Spin = Instance.new("BodyAngularVelocity")
+				Spin.Name = "Spinning"
+				Spin.Parent = getRoot(game.Players.LocalPlayer.Character)
+				Spin.MaxTorque = Vector3.new(0, math.huge, 0)
+				Spin.AngularVelocity = Vector3.new(0,getgenv().SpinBotSpeed,0)
+			else
+				for i,v in pairs(getRoot(game.Players.LocalPlayer.Character):GetChildren()) do
+					if v.Name == "Spinning" then
+						v:Destroy()
+					end
+				end
+			end
+		end)
